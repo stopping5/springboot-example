@@ -15,23 +15,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @Api(description = "Hello模块接口文档")
 public class HelloController {
-    @GetMapping("/hello")
-    @ApiOperation(value = "say hello 接口")
-    public String hello(){
-        User u = new User(1L,"stopping","123456");
-        return "hello"+u.toString();
-    }
-    @ApiOperation("通过用户ID 查询用户信息接口")
-    @GetMapping("/getUser/{id}")
-    public User getUser(@PathVariable("id")@ApiParam("用户唯一ID") Long id){
-        User u = new User(1L,"stopping","123456");
-        u.getId();
-        return u;
-    }
-    @ApiOperation("新增用户接口")
-    @PostMapping("/addUser")
-    public String insertUser(@RequestBody @ApiParam("用户body") User user){
-        return "ok";
-    }
 
+    @GetMapping
+    @ApiOperation(value = "hello 测试")
+    public String sayHello(){
+        return "Hello";
+    }
 }
