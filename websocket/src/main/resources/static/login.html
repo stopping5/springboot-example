@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <script src="./js/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+    <p>用户名:<input type="text" id="username"></p>
+    <button id="login">登录</button>
+    <script>
+        $(document).ready(function() {
+            $("#login").click(function () {
+                $.get("/login?username="+$("#username").val(),function (data) {
+                    if(data.code == 200){
+                        window.location.href="chatRoom.html"
+                    }
+                })
+            });
+        })
+    </script>
+</body>
+</html>
