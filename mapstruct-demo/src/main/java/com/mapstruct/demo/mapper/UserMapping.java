@@ -10,16 +10,16 @@ import org.mapstruct.Mapping;
 
 /**
  * 用户映射接口
- * */
+ */
 @Mapper(componentModel = "spring")
 public interface UserMapping {
     /**
      * 用户 body to dto
-     * */
-    @Mapping(source = "username",target = "name")
+     */
+    @Mapping(source = "username", target = "name")
     UserDto userBodyToDto(UserBody body);
 
-    @Mapping(source = "name",target = "bookName")
-    @Mapping(source = "date",target = "lendDate")
+    @Mapping(source = "name", target = "bookName")
+    @Mapping(source = "date", target = "lendDate")
     BookDto bookBodyToDto(BookBody bookBody);
 }

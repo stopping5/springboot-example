@@ -2,41 +2,64 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ras-security-demo" />
+        <module name="spring-security-demo" />
         <module name="rabbitmq-demo" />
+        <module name="aop-redist-demo" />
+        <module name="mapstruct-demo" />
+        <module name="pattern" />
+        <module name="security-api-demo" />
+        <module name="datainteraction-demo" />
+        <module name="springboot-example" />
+        <module name="gupaoedu-vip-spring" />
+        <module name="ras-security-demo" />
+        <module name="schedule" />
+        <module name="spring-mvc-web" />
         <module name="mybatisplus-demo" />
         <module name="websocket" />
         <module name="valid-demo" />
-        <module name="mapstruct-demo" />
-        <module name="security-api-demo" />
-        <module name="datainteraction-demo" />
+        <module name="springboot-async" />
+        <module name="master-slave-redis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="datainteraction-demo" target="1.8" />
-      <module name="mapstruct-demo" target="1.8" />
-      <module name="mybatisplus-demo" target="1.8" />
-      <module name="rabbitmq-demo" target="1.8" />
-      <module name="ras-security-demo" target="1.8" />
-      <module name="security-api-demo" target="1.8" />
-      <module name="valid-demo" target="1.8" />
-      <module name="websocket" target="1.8" />
+      <module name="java-base" target="1.8" />
+      <module name="master-slave-redis" target="1.8" />
+      <module name="MasterSlaveRedis" target="1.8" />
+      <module name="spring-security-demo" target="1.8" />
+      <module name="spring-secury-demo" target="1.8" />
+      <module name="springmvc-demo" target="1.8" />
+      <module name="springmvc-demo-1" target="1.8" />
+      <module name="websocket-chat" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="MasterSlaveRedis" options="-parameters" />
+      <module name="aop-redist-demo" options="-parameters" />
       <module name="datainteraction-demo" options="-parameters" />
+      <module name="gupaoedu-vip-spring" options="-verbose -bootclasspath &quot;C:/Program Files/Java/jdk1.8.0_261/jre/lib/rt.jar&quot;" />
+      <module name="java-base" options="-parameters" />
       <module name="mapstruct-demo" options="-parameters" />
+      <module name="master-slave-redis" options="-parameters" />
       <module name="mybatisplus-demo" options="-parameters" />
+      <module name="pattern" options="-parameters" />
       <module name="rabbitmq-demo" options="-parameters" />
       <module name="ras-security-demo" options="-parameters" />
+      <module name="schedule" options="-parameters" />
       <module name="security-api-demo" options="-parameters" />
+      <module name="spring-security-demo" options="-parameters" />
+      <module name="spring-secury-demo" options="-parameters" />
+      <module name="springboot-async" options="-parameters" />
+      <module name="springboot-example" options="-parameters" />
+      <module name="springmvc-demo" options="-parameters" />
       <module name="valid-demo" options="-parameters" />
       <module name="websocket" options="-parameters" />
+      <module name="websocket-chat" options="-parameters" />
     </option>
   </component>
 </project>

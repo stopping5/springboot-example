@@ -11,22 +11,22 @@ import javax.xml.ws.RequestWrapper;
 
 /**
  * 请求接口数据拦截器
- * */
+ */
 public class RequestDataInterceptor implements HandlerInterceptor {
     /**
      * 请求前拦截
-     * */
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("请求拦截");
         String token = request.getHeader("token");
         String requestBody = request.getParameter("requestBody");
-        System.out.println("获取token:"+token);
+        System.out.println("获取token:" + token);
         System.out.println("获取request:");
         User user = new User();
         user.setName("xdp");
         user.setPassword("1234567");
-        request.setAttribute("user",user);
+        request.setAttribute("user", user);
         return true;
     }
 

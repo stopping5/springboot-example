@@ -6,75 +6,78 @@
     <script src="./js/jquery-1.12.3.min.js"></script>
 </head>
 <body>
-    <p>当前用户,<span id="username">xxx</span></p>
-    <p>在线用户</p>
-    <div id="onlineUser"></div>
-    <input type="text" id="msg" /><button id="send">发送</button>
-    <input type="text" id="toUserName" /> <button id="sendUser">按联系人发送</button>
-    <h1>聊天内容</h1>
-    <div id="chat">
+<p>当前用户,<span id="username">xxx</span></p>
+<p>在线用户</p>
+<div id="onlineUser"></div>
+<input type="text" id="msg"/>
+<button id="send">发送</button>
+<input type="text" id="toUserName"/>
+<button id="sendUser">按联系人发送</button>
+<h1>聊天内容</h1>
+<div id="chat">
 
-    </div>
-    <script>
-        $(document).ready(function() {
-            var websocket ;
-            console.info("用户获取信息");
-            var username = "";
-            $.get("/user",function (data) {
-                if(data.code == 200){
-                    console.info("获取到的信息"+data)
-                    username = data.data.username;
-                    $("#username").text(username);
-                }
-                console.info("获取用户名"+username);
+</div>
+<script>
+    $(document).ready(function () {
+        var websocket;
+        console.info("用户获取信息");
+        var username = "";
+        $.get("/user", function (data) {
+            if (data.code == 200) {
+                console.info("获取到的信息" + data)
+                username = data.data.username;
+                $("#username").text(username);
+            }
+            console.info("获取用户名" + username);
 
-                console.info("开始连接websocket");
-                if ('WebSocket' in window) {
-                    websocket = new WebSocket("ws://localhost:8080/chat/"+username);
-                }
-                console.info("连接完成websocket");
-                //获取消息
-                websocket.onmessage = function(event) {
-                    console.info("获取服务端信息"+event)
-                    $("#chat").append("<p>"+event.data+"</p>")
-                    //当前在线
-                    $.get("/chat/onlineUser",function (data) {
-                        console.info("用户昵称"+data);
-                        $("#onlineUser").html("");
-                        if (data.code == 200){
-                            var users = data.data;
-                            var user ;
-                            for(var i = 0; i < users.length; i++) {
-                                //do something
-                                user = users[i];
-                                console.info("用户昵称"+user.username);
-                                $("#onlineUser").append("<h3>"+user.username+"</h3>")
-                            };
+            console.info("开始连接websocket");
+            if ('WebSocket' in window) {
+                websocket = new WebSocket("ws://139.224.113.113:8082/chat/" + username);
+            }
+            console.info("连接完成websocket");
+            //获取消息
+            websocket.onmessage = function (event) {
+                console.info("获取服务端信息" + event)
+                $("#chat").append("<p>" + event.data + "</p>")
+                //当前在线
+                $.get("/chat/onlineUser", function (data) {
+                    console.info("用户昵称" + data);
+                    $("#onlineUser").html("");
+                    if (data.code == 200) {
+                        var users = data.data;
+                        var user;
+                        for (var i = 0; i < users.length; i++) {
+                            //do something
+                            user = users[i];
+                            console.info("用户昵称" + user.username);
+                            $("#onlineUser").append("<h3>" + user.username + "</h3>")
                         }
-                    });
-                };
-            })
-
-            $("#send").click(function () {
-                var message = $("#msg").val();
-                var data ={};
-                data['msg'] = message;
-                data['type'] = 0;
-                console.info("发送信息"+message);
-                websocket.send(JSON.stringify(data));
-            });
-
-            $("#sendUser").click(function () {
-                var toUserName = $("#toUserName").val();
-                var message = $("#msg").val();
-                console.info("按联系人["+toUserName+"]发送"+message);
-                var data ={};
-                data['msg'] = message;
-                data['type'] = 1;
-                data['username'] = toUserName;
-                websocket.send(JSON.stringify(data));
-            });
+                        ;
+                    }
+                });
+            };
         })
-    </script>
+
+        $("#send").click(function () {
+            var message = $("#msg").val();
+            var data = {};
+            data['msg'] = message;
+            data['type'] = 0;
+            console.info("发送信息" + message);
+            websocket.send(JSON.stringify(data));
+        });
+
+        $("#sendUser").click(function () {
+            var toUserName = $("#toUserName").val();
+            var message = $("#msg").val();
+            console.info("按联系人[" + toUserName + "]发送" + message);
+            var data = {};
+            data['msg'] = message;
+            data['type'] = 1;
+            data['username'] = toUserName;
+            websocket.send(JSON.stringify(data));
+        });
+    })
+</script>
 </body>
 </html>

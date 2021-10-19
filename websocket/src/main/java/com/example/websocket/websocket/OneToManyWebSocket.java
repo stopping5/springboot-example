@@ -31,12 +31,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class OneToManyWebSocket {
     /**
      * 在线数量
-     * */
+     */
     private static AtomicInteger userNum = new AtomicInteger();
     /**
      * 缓存信息
-     * */
-    private static ConcurrentMap<String,Session> userSession = new ConcurrentHashMap<>();
+     */
+    private static ConcurrentMap<String, Session> userSession = new ConcurrentHashMap<>();
 
     /**
      * @Description 建立连接成功调用
@@ -45,15 +45,15 @@ public class OneToManyWebSocket {
      */
     @OnOpen
     public void onOpen(Session session,
-                       @PathParam("number")String num){
+                       @PathParam("number") String num) {
         addUserNum();
         //计算在线数量
-        log.info("建立连接成功{},当前在先用户数量{}",num,userNum);
+        log.info("建立连接成功{},当前在先用户数量{}", num, userNum);
         //缓存用户信息
-        userSession.put(num,session);
+        userSession.put(num, session);
         //广播所有用户消息
         try {
-            broadcast(num+"已经登录");
+            broadcast(num + "已经登录");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,32 +65,32 @@ public class OneToManyWebSocket {
      * @Author stopping
      */
     @OnClose
-    public void onClose(@PathParam("number")String num){
+    public void onClose(@PathParam("number") String num) {
         //自检数量
         supUserNum();
         //移除缓存
         userSession.remove(num);
-        log.info("用户{}退出,当前用户数量",num,userNum);
+        log.info("用户{}退出,当前用户数量", num, userNum);
     }
 
     /**
      * 广播消息
-     * */
+     */
     public void broadcast(String message) throws IOException {
         Set<String> keys = userSession.keySet();
-        for (String key:keys){
+        for (String key : keys) {
             Session session = userSession.get(key);
-            sendMessage(session,message);
+            sendMessage(session, message);
         }
     }
 
     /**
      * 发送消息
-     * */
+     */
     @OnMessage
     public void sendMessage(Session session, String message) throws IOException {
-        log.info("发送信息{}",message);
-        if(session != null){
+        log.info("发送信息{}", message);
+        if (session != null) {
             synchronized (session) {
                 System.out.println("发送数据：" + message);
                 session.getBasicRemote().sendText(message);
@@ -100,14 +100,15 @@ public class OneToManyWebSocket {
 
     /**
      * 数量自增
-     * */
-    public void addUserNum(){
+     */
+    public void addUserNum() {
         userNum.incrementAndGet();
     }
+
     /**
      * 数量自减
-     * */
-    public void supUserNum(){
+     */
+    public void supUserNum() {
         userNum.decrementAndGet();
     }
 

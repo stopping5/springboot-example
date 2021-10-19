@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class HelloController {
     @GetMapping("/hello")
-    public String hello(@RequestBody User user){
+    public String hello(@RequestBody User user) {
         System.out.println(user.getName() + "&" + user.getPassword());
         return "hello";
     }
 
     @PostMapping("/encrypt")
-    public String encrypt(){
+    public String encrypt() {
         System.out.println("okokokok");
         return "SUCCESS";
     }

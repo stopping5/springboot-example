@@ -7,15 +7,15 @@ import java.util.List;
 
 /**
  * 学校 body
- * */
+ */
 @Data
 public class SchoolBody {
     /**
      * school name
-     * */
+     */
     private String name;
     /**
      * all student in school
-     * */
+     */
     private List<UserBody> users;
 }

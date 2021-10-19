@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+
 @Component
-@ControllerAdvice(basePackages =  "com.example.demo.controller")
+@ControllerAdvice(basePackages = "com.example.demo.controller")
 public class RequestBodyAdvice implements org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice {
     @Override
     public boolean supports(MethodParameter methodParameter, Type type, Class<? extends HttpMessageConverter<?>> aClass) {

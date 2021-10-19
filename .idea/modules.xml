@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/websocket-chat/java-base.iml" filepath="$PROJECT_DIR$/websocket-chat/java-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-stream/java-stream.iml" filepath="$PROJECT_DIR$/java-stream/java-stream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-demo/springmvc-demo-1.iml" filepath="$PROJECT_DIR$/springmvc-demo/springmvc-demo-1.iml" />
+    </modules>
+  </component>
+</project>

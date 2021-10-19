@@ -13,10 +13,10 @@ public interface SchoolMapping {
 
     SchoolBody schoolDtoToBody(SchoolDto dto);
 
-    default List<UserBody> userJsonToBean(String users){
-        if ("".equals(users)){
+    default List<UserBody> userJsonToBean(String users) {
+        if ("".equals(users)) {
             return null;
         }
-        return JSONObject.parseArray(users,UserBody.class);
+        return JSONObject.parseArray(users, UserBody.class);
     }
 }

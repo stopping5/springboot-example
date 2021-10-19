@@ -13,6 +13,7 @@ public class RabbitMQproducer {
     private static String userName = "root";
     private static String passWord = "root";
     private static int port = 5672;
+
     /**
      * @param args
      */

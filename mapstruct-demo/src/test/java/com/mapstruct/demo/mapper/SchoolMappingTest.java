@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 @Slf4j
 class SchoolMappingTest {
@@ -21,7 +22,7 @@ class SchoolMappingTest {
     private SchoolMapping schoolMapping;
 
     @Test
-    public void test(){
+    public void test() {
         SchoolDto schoolDto = new SchoolDto();
         schoolDto.setName("大学");
         UserBody userBody = new UserBody();
@@ -36,7 +37,7 @@ class SchoolMappingTest {
         userBodies.add(userBody);
         userBodies.add(userBody1);
 
-        String json =  JSONObject.toJSONString(userBodies);
+        String json = JSONObject.toJSONString(userBodies);
         schoolDto.setUsers(json);
 
         SchoolBody body = schoolMapping.schoolDtoToBody(schoolDto);

@@ -9,11 +9,10 @@ import lombok.Getter;
  */
 @Getter
 public enum ResultCode {
-    SUCCESS(200,"操作成功"),
-    FAILED(499,"操作失败,业务异常"),
-    ERROR(500,"系统异常")
-    ;
-    private final long  code;
+    SUCCESS(200, "操作成功"),
+    FAILED(499, "操作失败,业务异常"),
+    ERROR(500, "系统异常");
+    private final long code;
     private final String message;
 
     ResultCode(long code, String message) {

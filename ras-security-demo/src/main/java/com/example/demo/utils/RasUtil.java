@@ -19,8 +19,8 @@ public class RasUtil {
     //设置公私钥持久化文件的存放位置
     public static void setKeyPath(String path) {
         if (PUBLIC_KEY_FILE.equals("PublicKey")) {
-            PUBLIC_KEY_FILE = path + (path.endsWith("//")?"PublicKey":"/PublicKey");
-            PRIVATE_KEY_FILE = path + (path.endsWith("//")?"PrivateKey":"/PrivateKey");
+            PUBLIC_KEY_FILE = path + (path.endsWith("//") ? "PublicKey" : "/PublicKey");
+            PRIVATE_KEY_FILE = path + (path.endsWith("//") ? "PrivateKey" : "/PrivateKey");
         }
     }
 
@@ -105,7 +105,7 @@ public class RasUtil {
         RasUtil.setKeyPath("C:\\Users\\Administrator\\Desktopx");
         System.out.println("请输入明文：");
         Scanner sca = new Scanner(System.in);
-        String str =sca.nextLine();
+        String str = sca.nextLine();
         System.out.println("============================");
         String secret = RasUtil.encryptWithRSA(str);
         System.out.println("经过RSA加密后的密文为：");

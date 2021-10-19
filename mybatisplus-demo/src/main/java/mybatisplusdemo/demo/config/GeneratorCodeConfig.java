@@ -16,13 +16,13 @@ import java.util.Scanner;
 
 /**
  * 自动生成mybatisplus的相关代码
- * */
+ */
 public class GeneratorCodeConfig {
     /**
      * <p>
      * 读取控制台内容
-     * @param
-     * </p>
+     *
+     * @param </p>
      */
     public static String scanner(String tip) {
         Scanner scanner = new Scanner(System.in);

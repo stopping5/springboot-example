@@ -16,8 +16,9 @@ import java.util.List;
 class UserMappingTest {
     @Resource
     private UserMapping userMapping;
+
     @Test
-    public void testUserMapping(){
+    public void testUserMapping() {
         UserBody body = new UserBody();
         body.setPassword("123");
         body.setUsername("xdp");

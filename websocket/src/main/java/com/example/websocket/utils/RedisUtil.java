@@ -1,4 +1,5 @@
 package com.example.websocket.utils;
+
 import org.springframework.data.redis.connection.DataType;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.ScanOptions;
@@ -193,6 +194,7 @@ public class RedisUtil {
 
     /**
      * 将值 value 关联到 key ，并将 key 的过期时间设为 timeout
+     *
      * @param timeout 过期时间
      * @param unit    时间单位, 天:TimeUnit.DAYS 小时:TimeUnit.HOURS 分钟:TimeUnit.MINUTES
      *                秒:TimeUnit.SECONDS 毫秒:TimeUnit.MILLISECONDS
@@ -203,6 +205,7 @@ public class RedisUtil {
 
     /**
      * 只有在 key 不存在时设置 key 的值
+     *
      * @return 之前已经存在返回false, 不存在返回true
      */
     public boolean setIfAbsent(String key, String value) {
@@ -243,7 +246,6 @@ public class RedisUtil {
 
     /**
      * 增加(自增长), 负数则为自减
-     *
      */
     public Long incrBy(String key, long increment) {
         return redisTemplate.opsForValue().increment(key, increment);

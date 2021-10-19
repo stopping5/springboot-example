@@ -21,17 +21,17 @@ public class SendController {
     private RabbitMqConfig rabbitMqConfig;
 
     @RequestMapping("/send")
-    public String sendMsg(String message){
+    public String sendMsg(String message) {
         ConnectionFactory connectionFactory = rabbitMqConfig.connectionFactory();
         try {
             Connection connection = connectionFactory.newConnection();
             //创建Channel
             //The channel can now be used to send and receive messages 通道可以用来发送和接收消息
             Channel channel = connection.createChannel();
-            channel.exchangeDeclare(EXCHANGE_NAMEW,"direct");
-            channel.queueDeclare(QUEUE_NAME,false,false,false,null);
-            channel.basicPublish("",QUEUE_NAME,null,message.getBytes(StandardCharsets.UTF_8));
-            System.out.println("send message :"+message);
+            channel.exchangeDeclare(EXCHANGE_NAMEW, "direct");
+            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+            channel.basicPublish("", QUEUE_NAME, null, message.getBytes(StandardCharsets.UTF_8));
+            System.out.println("send message :" + message);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (TimeoutException e) {

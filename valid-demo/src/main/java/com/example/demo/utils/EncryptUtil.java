@@ -120,7 +120,7 @@ public class EncryptUtil {
             edata = (new BASE64Decoder()).decodeBuffer(data);
             return edata;
         } catch (Exception e) {
-           /* ExceptionLog.print("error:", e);*/
+            /* ExceptionLog.print("error:", e);*/
         }
         return null;
     }
@@ -172,7 +172,7 @@ public class EncryptUtil {
             byte[] bytes = Base64.decodeBase64(edata);
             return des3Decrypt(bytes, key);
         } catch (Exception e) {
-           /* ExceptionLog.print("error:", e);*/
+            /* ExceptionLog.print("error:", e);*/
         }
         return null;
     }
@@ -200,7 +200,7 @@ public class EncryptUtil {
                 data = new String(bb, "UTF-8");
             }
         } catch (Exception e) {
-           /* ExceptionLog.print("error", e);*/
+            /* ExceptionLog.print("error", e);*/
         }
         return data;
     }
@@ -231,17 +231,16 @@ public class EncryptUtil {
     /**
      * 对字符串加密,加密算法使用SHA-256
      *
-     * @param signedKey,createUser,createTime
-     *            要加密的字符串
+     * @param signedKey,createUser,createTime 要加密的字符串
      * @return
      */
     public static String EncryptSHA256(String signedKey, String createUser, String createTime) {
         MessageDigest md = null;
         String strDes = null;
-        String [] strs = new String[]{signedKey,createUser,createTime};
+        String[] strs = new String[]{signedKey, createUser, createTime};
         Arrays.sort(strs);
         StringBuilder stringBuilder = new StringBuilder();
-        for(String str:strs){
+        for (String str : strs) {
             stringBuilder.append(str);
         }
         byte[] bt = stringBuilder.toString().getBytes();
@@ -254,6 +253,7 @@ public class EncryptUtil {
         }
         return strDes;
     }
+
     public static String bytes2Hex(byte[] bts) {
         String des = "";
         String tmp = null;
@@ -267,14 +267,14 @@ public class EncryptUtil {
         return des;
     }
 
-    public static String returnEcryptString(String ecryptId){
-        String data=null;
+    public static String returnEcryptString(String ecryptId) {
+        String data = null;
         try {
-            data=new String( EncryptUtil.BASE64Decrypt(ecryptId.trim()),"utf-8");
-        }catch (Exception e){
+            data = new String(EncryptUtil.BASE64Decrypt(ecryptId.trim()), "utf-8");
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return  data;
+        return data;
     }
 }
 

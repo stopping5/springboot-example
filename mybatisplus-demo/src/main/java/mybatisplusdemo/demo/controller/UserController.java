@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author stopping
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @ApiOperation("获取用户接口")
     @GetMapping("/getUser")
-    public String getUser(){
-        return  "SUCCESS";
+    public String getUser() {
+        return "SUCCESS";
     }
 }

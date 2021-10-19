@@ -22,13 +22,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Getter
 @Setter
 public class OneWebSocket {
-    /** 记录当前在线连接数 */
+    /**
+     * 记录当前在线连接数
+     */
     private static AtomicInteger onlineCount = new AtomicInteger(0);
 
     /**
-     *  保存登录session到用户容器中
-     * */
-    private static ConcurrentMap<String,Session> userMap = new ConcurrentHashMap<>();
+     * 保存登录session到用户容器中
+     */
+    private static ConcurrentMap<String, Session> userMap = new ConcurrentHashMap<>();
 
     /**
      * 连接建立成功调用的方法
@@ -51,8 +53,7 @@ public class OneWebSocket {
     /**
      * 收到客户端消息后调用的方法
      *
-     * @param message
-     *            客户端发送过来的消息
+     * @param message 客户端发送过来的消息
      */
     @OnMessage
     public void onMessage(String message, Session session) {

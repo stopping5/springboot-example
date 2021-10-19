@@ -9,11 +9,10 @@ import org.springframework.context.ApplicationContext;
 @Slf4j
 public class SecurityApiDemoApplication {
 
-    public static void main(String[] args)
-    {
-       ApplicationContext applicationContext = SpringApplication.run(SecurityApiDemoApplication.class, args);
-       String [] name = applicationContext.getBeanDefinitionNames();
-        for (String beanName:name) {
+    public static void main(String[] args) {
+        ApplicationContext applicationContext = SpringApplication.run(SecurityApiDemoApplication.class, args);
+        String[] name = applicationContext.getBeanDefinitionNames();
+        for (String beanName : name) {
             log.info(beanName);
         }
     }

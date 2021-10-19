@@ -33,30 +33,31 @@ public class ChatRoomController {
 
     /**
      * 获取当前在线用户
-     * */
+     */
     @GetMapping("/onlineUser")
     @ApiOperation(value = "获取聊天室在线人数")
-    public CommonResult<List<User>> onlineUser(){
+    public CommonResult<List<User>> onlineUser() {
         ConcurrentMap<String, Session> userSession = ChatWebSocket.getUserSession();
         List<User> users = new ArrayList<>();
-        for (String username :userSession.keySet()){
+        for (String username : userSession.keySet()) {
             User u = new User();
             u.setUsername(username);
             users.add(u);
         }
-        return CommonResult.success(users,"success");
+        return CommonResult.success(users, "success");
     }
+
     /**
      * 确认离线查看信息
-     * */
+     */
     @GetMapping("/ackOutLineMsg/{username}")
     public CommonResult ackOutLineMsg(
-            @PathVariable("username")String username){
+            @PathVariable("username") String username) {
         //清除离线缓存信息
-        log.info("用户{}查看离线消息",username);
-        try{
+        log.info("用户{}查看离线消息", username);
+        try {
             redisUtil.delete(username);
-        }catch (Exception e){
+        } catch (Exception e) {
             return CommonResult.failed();
         }
         return CommonResult.success("success");

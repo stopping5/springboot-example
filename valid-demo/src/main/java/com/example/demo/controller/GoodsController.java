@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author stopping
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GoodsController {
     @GetMapping("goods")
     @ApiOperation("获取商品接口")
-    public String getGoods(){
+    public String getGoods() {
         return "SUCCESS";
     }
 }
